@@ -1,0 +1,29 @@
+<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
+<h4 class="bold">Nova Comissão</h4>
+<?php echo form_open(admin_url('banco_comissoes/comissoes/salvar')); ?>
+
+<div class="form-group">
+  <label>Correspondente</label>
+  <select name="correspondent_id" class="form-control" required>
+    <?php foreach ($correspondents as $correspondent): ?>
+      <option value="<?= $correspondent['staffid']; ?>"><?= $correspondent['firstname']; ?></option>
+    <?php endforeach; ?>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>Tipo de Crédito</label>
+  <select name="credit_type_id" class="form-control" required>
+    <?php foreach ($credit_types as $type): ?>
+      <option value="<?= $type['id']; ?>"><?= $type['name']; ?></option>
+    <?php endforeach; ?>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>Percentual de Comissão (%)</label>
+  <input type="number" step="0.01" name="commission_percentage" class="form-control" required>
+</div>
+
+<button type="submit" class="btn btn-primary">Salvar Comissão</button>
+<?php echo form_close(); ?>
